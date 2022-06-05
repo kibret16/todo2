@@ -54,6 +54,8 @@ function listTasks() {
   var tasks = getTasks();
   for (var i of Object.keys(tasks)) {
     var task = nl2br(tasks[i]);
+    task = task.replace(/\[\]/g, "<input type='checkbox'> ");
+    task = task.replace(/\[ \]/g, "<input type='checkbox'> ");
     showTask(i, task);
   }
 }
@@ -62,7 +64,7 @@ function showTask(id = 1, taskDetail = "Task detail") {
   const tdiv = document.createElement("div");
   tdiv.setAttribute("id", id);
   tdiv.classList.add('full-height', 'task-details');
-  tdiv.innerHTML = "Task "+id+"<hr>";
+  tdiv.innerHTML = "<h2>Task "+id+"</h2><hr>";
   tdiv.innerHTML += "<div class='task-detail-view'>"+taskDetail+"<div>";
   tdiv.innerHTML += "<hr><button class='btn done-button' id='delete-"+id+"' onclick='deleteTask("+id+")'>Done</button>";
   tdiv.innerHTML += "<button class='btn close-button' id='close-"+id+"' onclick='closeTask("+id+")'>Close</button>";

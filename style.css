@@ -10,10 +10,6 @@
   color: #aa9;
 }
 
-body {
-  padding: 0.5em;
-}
-
 input, .input-field {
   padding: 0.5em;
 }
@@ -26,19 +22,20 @@ hr {
 
 .container-box {
   clear: both;
-  padding: 0.25em;
+  padding: 1em;
   max-width: 500px;
   margin: auto;
 }
 
 .task-details {
   border-radius: 1px;
-  min-height: 30em;
+  min-height: 40em;
   padding: 0.5em;
 }
 
 .task-detail-view {
   height: 75%;
+  font-size: large
 }
 
 .done-button {
@@ -111,9 +108,18 @@ hr {
 
 #start-button {
   background-color: #333;
-  border-radius: 50%;
-  padding:25% 20%;
+  /* border-radius: 20%; */
+  padding: 5%;
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  margin: 1em;
+}
+
+::placeholder {
+  opacity: .4;
+}
+
+.font-large {
+  font-size: 1.1em;
 }
