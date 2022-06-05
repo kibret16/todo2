@@ -37,6 +37,14 @@ hr {
   padding: 0.5em;
 }
 
+.task-detail-view {
+  height: 75%;
+}
+
+.done-button {
+  float: right;
+}
+
 .full-width {
   width: 100%;
   position: relative;
@@ -45,10 +53,11 @@ hr {
 .full-height {
   /* height: calc(100vh); */
   position: absolute;
-  top: 1em;
-  left: 1em;
-  right: 1em;
-  bottom: 1em;
+  top: 0em;
+  left: 0em;
+  right: 0em;
+  bottom: 0em;
+  padding: 1em;
 }
 
 .underline {

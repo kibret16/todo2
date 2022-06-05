@@ -1,19 +1,16 @@
-// if ("serviceWorker" in navigator) {
-//   if (navigator.serviceWorker.controller) {
-//     console.log("[PWA Builder] active service worker found, no need to register");
-//   } else {
-//     navigator.serviceWorker
-//       .register("pwabuilder-sw.js", {
-//         scope: "./"
-//       })
-//       .then(function(reg) {
-//         console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
-//       });
-//   }
-// }
-
-// TODO: get tasks, arrayify them, add one task to object, jsonfiy, store.
-// {tasks:""}
+if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log("[PWA Builder] active service worker found, no need to register");
+  } else {
+    navigator.serviceWorker
+      .register("pwabuilder-sw.js", {
+        scope: "./"
+      })
+      .then(function(reg) {
+        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
 
 function addTask(id) {
   event.preventDefault();
@@ -28,6 +25,15 @@ function addTask(id) {
 
   setTasks(tasks);
   clearText(id);
+}
+
+function deleteTask(id) {
+  closeTask(id);
+  var tasks = getTasks();
+  console.log(tasks);
+  delete tasks[id];
+  tasks = JSON.stringify(tasks); 
+  setTasks(tasks);
 }
 
 function setTasks(tasks) {
@@ -55,9 +61,17 @@ function listTasks() {
 function showTask(id = 1, taskDetail = "Task detail") {
   const tdiv = document.createElement("div");
   tdiv.setAttribute("id", id);
-  tdiv.classList.add('bordered', 'full-height', 'task-details');
-  tdiv.innerHTML = taskDetail;
+  tdiv.classList.add('full-height', 'task-details');
+  tdiv.innerHTML = "Task "+id+"<hr>";
+  tdiv.innerHTML += "<div class='task-detail-view'>"+taskDetail+"<div>";
+  tdiv.innerHTML += "<hr><button class='btn done-button' id='delete-"+id+"' onclick='deleteTask("+id+")'>Done</button>";
+  tdiv.innerHTML += "<button class='btn close-button' id='close-"+id+"' onclick='closeTask("+id+")'>Close</button>";
   document.getElementById("app").appendChild(tdiv);
+}
+
+function closeTask(id) {
+  var task = document.getElementById(id);
+  task.remove();
 }
 
 function toObject(arr) {
