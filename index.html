@@ -18,7 +18,7 @@
 
 <body id="app">
 
-<div class="container-box pb">
+<div class="container-box">
   <h1 class="">Plan Tasks</h1>
   <hr>
   <div class="full-width">
@@ -26,7 +26,9 @@
     <form method="post" onsubmit="addTask('task-details')">
     <div class="full-width">
       <div class="row">
-        <textarea required id="task-details" class="font-large full-width input-field bordered task-details" placeholder="Enter detailed plan here. Use [] for checkboxes."></textarea>
+        <textarea required id="task-details" class="full-width input-field bordered task-details font-normal" placeholder="Enter detailed plan here.
+        
+Use [ ] for checkboxes."></textarea>
         <!-- <input class="relaxed full-width input-field bordered" placeholder="Subtasks" > -->
       </div>
         <div class="row text-center">
@@ -39,7 +41,7 @@
 
 <div class="bottom full-width">
   <div class="full-width text-center">
-    <button id="start-button" class="font-large centered" onclick="listTasks()">Start Working on Tasks</button><br>
+    <button id="start-button" class="font-large centered" onclick="listTasks()"><strong>START WORK (<span id="taskcount"></span>)</strong></button><br>
   </div>
 </div>
 

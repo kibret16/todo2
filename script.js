@@ -12,6 +12,14 @@ if ("serviceWorker" in navigator) {
   }
 }
 
+function countTasks() {
+  var tasks = getTasks();
+  disp = document.getElementById("taskcount")
+  disp.innerText = Object.keys(tasks).length;
+}
+
+countTasks();
+
 function addTask(id) {
   event.preventDefault();
   var tasks = getTasks();
@@ -31,7 +39,6 @@ function addTask(id) {
 function deleteTask(id) {
   closeTask(id);
   var tasks = getTasks();
-  console.log(tasks);
   delete tasks[id];
   tasks = JSON.stringify(tasks); 
   setTasks(tasks);
@@ -39,6 +46,7 @@ function deleteTask(id) {
 
 function setTasks(tasks) {
   localStorage.setItem("tasks", tasks);
+  countTasks();
 }
 
 function getTasks() {
@@ -48,6 +56,13 @@ function getTasks() {
   } else {
     tasks = [];
   }
+  tasks = Object.keys(tasks).sort().reverse().reduce(
+    (obj, key) => { 
+      obj[key] = tasks[key]; 
+      return obj;
+    }, 
+    {}
+  );
   return tasks;
 }
 
