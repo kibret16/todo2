@@ -15,7 +15,9 @@ if ("serviceWorker" in navigator) {
 function countTasks() {
   var tasks = getTasks();
   disp = document.getElementById("taskcount")
-  disp.innerText = Object.keys(tasks).length;
+  var num = Object.keys(tasks).length;
+  if (num > 0) disp.innerText = "Do "+num+" Tasks";
+  else disp.innerText = "NO WORK!";
 }
 
 countTasks();
