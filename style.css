@@ -20,6 +20,10 @@ hr {
   border: 1px solid #555;
 }
 
+.pb {
+  margin-bottom: 5em;
+}
+
 .container-box {
   clear: both;
   padding: 1em;
@@ -29,13 +33,14 @@ hr {
 
 .task-details {
   border-radius: 1px;
-  min-height: 30em;
+  min-height: calc(100vh - 20em);
   padding: 0.5em;
 }
 
 .task-detail-view {
-  height: 75%;
-  font-size: large
+  height: 80%;
+  font-size: large;
+  overflow: scroll;
 }
 
 .done-button {

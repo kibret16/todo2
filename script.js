@@ -18,6 +18,7 @@ function addTask(id) {
   if(tasks.length == 0) tasks = toObject(tasks);
 
   var task = document.getElementById(id).value;
+  task = escapeHtml(task);
   var ms = Date.now()+"";
   ms = parseInt(ms);
   tasks[ms] = task;
@@ -62,6 +63,7 @@ function listTasks() {
 
 function showTask(id = 1, taskDetail = "Task detail") {
   const tdiv = document.createElement("div");
+  taskDetail = taskDetail;
   tdiv.setAttribute("id", id);
   tdiv.classList.add('full-height', 'task-details');
   tdiv.innerHTML = "<h2>Task "+id+"</h2><hr>";
@@ -81,14 +83,6 @@ function toObject(arr) {
   for (var i = 0; i < arr.length; ++i)
     rv[i] = arr[i];
   return rv;
-}
-
-function nl2br(str, is_xhtml = false) {
-  if (typeof str === 'undefined' || str === null) {
-      return '';
-  }
-  var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
-  return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 }
 
 function copyText(id) {
@@ -134,4 +128,22 @@ function getCookie(cname) {
     }
   }
   return "";
+}
+
+function nl2br(str, is_xhtml = false) {
+  if (typeof str === 'undefined' || str === null) {
+      return '';
+  }
+  var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+  return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+}
+
+function escapeHtml(unsafe){
+  return unsafe
+    .replace(/<br>/g, "\n")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
