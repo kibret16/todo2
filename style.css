@@ -52,6 +52,7 @@ hr {
 
 .done-button {
   float: right;
+  background-color: green !important;
 }
 
 .full-width {
@@ -100,6 +101,7 @@ hr {
   border-radius: .25em;
   min-width: 5rem;
   background: #555;
+  font-size: 1.1em;
 }
 
 .btn:active {

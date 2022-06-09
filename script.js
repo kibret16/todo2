@@ -85,8 +85,8 @@ function showTask(id = 1, taskDetail = "Task detail") {
   tdiv.classList.add('full-height', 'task-details');
   tdiv.innerHTML = "<h2>Task "+id+"</h2><hr>";
   tdiv.innerHTML += "<div class='task-detail-view'>"+taskDetail+"<div>";
-  tdiv.innerHTML += "<hr><button class='btn done-button' id='delete-"+id+"' onclick='deleteTask("+id+")'>Done</button>";
-  tdiv.innerHTML += "<button class='btn close-button' id='close-"+id+"' onclick='closeTask("+id+")'>Close</button>";
+  tdiv.innerHTML += "<hr><button class='btn done-button' id='delete-"+id+"' onclick='deleteTask("+id+")'>Done ✓</button>";
+  tdiv.innerHTML += "<button class='btn close-button' id='close-"+id+"' onclick='closeTask("+id+")'>Later</button>";
   document.getElementById("app").appendChild(tdiv);
 }
 
