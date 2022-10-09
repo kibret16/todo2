@@ -47,7 +47,7 @@ hr {
 .task-detail-view {
   height: 80%;
   font-size: large;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .done-button {
